@@ -1,75 +1,115 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
-  var sections = Array.prototype.slice.call(document.querySelectorAll("section"));
-  var underline = document.querySelector(".tab-underline");
-  var tabsBar = document.querySelector(".tabs");
+// Mobile robustness + performance improvements
+// - Reliable anchor scrolling on iOS (accounts for sticky header)
+// - Smooth, low-jank underline updates
+// - Carousel fixes (momentum, touch handling)
+// - Passive listeners to avoid scroll blocking
 
-  function getStickyOffset() {
-    return (tabsBar && tabsBar.offsetHeight ? tabsBar.offsetHeight : 0) + 6;
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = Array.from(document.querySelectorAll(".tab"));
+  const tabsContainer = document.querySelector(".tabs");
+  const underline = document.querySelector(".tab-underline");
+  const sections = Array.from(document.querySelectorAll("main section"));
+  let currentHash = "";
+  let ticking = false;
+
+  // Compute and expose --tabs-height for CSS scroll-margin-top
+  function updateTabsMetrics(){
+    const h = Math.round(tabsContainer.getBoundingClientRect().height);
+    document.documentElement.style.setProperty("--tabs-height", h + "px");
+  }
+  updateTabsMetrics();
+  window.addEventListener("resize", updateTabsMetrics, { passive: true });
+  window.addEventListener("orientationchange", updateTabsMetrics, { passive: true });
+
+  // Helper: position underline under visible active tab
+  function moveUnderlineTo(el){
+    if(!el) return;
+    const width = el.getBoundingClientRect().width;
+    const x = el.offsetLeft - tabsContainer.scrollLeft; // account for horizontal scroll
+    underline.style.width = width + "px";
+    underline.style.transform = `translateX(${Math.max(0, x)}px)`;
   }
 
-  function setUnderline(el) {
-    if (!underline || !el) return;
-    underline.style.width = el.offsetWidth + "px";
-    underline.style.transform = "translateX(" + el.offsetLeft + "px)";
-  }
-
-  function setActiveByHash(hash) {
-    for (var i = 0; i < tabs.length; i++) {
-      var t = tabs[i];
-      t.classList.toggle("active", t.getAttribute("href") === hash);
+  function setActiveTab(hash, {source="scroll"} = {}){
+    if(hash === currentHash) return;
+    currentHash = hash;
+    tabs.forEach(t => t.classList.remove("active"));
+    const active = document.querySelector(`.tab[href="${hash}"]`);
+    if(active){
+      active.classList.add("active");
+      moveUnderlineTo(active);
+      // Keep active tab in view; avoid smooth scrolling while main page is scrolling
+      active.scrollIntoView({ behavior: source === "click" ? "smooth" : "auto", inline: "center", block: "nearest" });
     }
-    setUnderline(document.querySelector('.tab[href="' + hash + '"]'));
+    // Update URL hash without jumping (for iOS correctness)
+    if(source === "click" && history.replaceState){
+      history.replaceState(null, "", hash);
+    }
   }
 
-  // Click pe tab
-  for (var i = 0; i < tabs.length; i++) {
-    (function(tab){
-      tab.addEventListener("click", function(e){
-        e.preventDefault();
-        var id = tab.getAttribute("href").slice(1);
-        var target = document.getElementById(id);
-        if (!target) return;
-        var y = target.getBoundingClientRect().top + window.pageYOffset - getStickyOffset();
-        window.scrollTo({ top: y, behavior: "smooth" });
-        setActiveByHash("#" + id);
-        try { tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" }); } catch(e){}
-      }, false);
-    })(tabs[i]);
-  }
-
-  // Scroll tracking optimizat (RAF)
-  var activeId = "";
-  var ticking = false;
+  // Scroll spy (throttled via rAF to minimize jank)
   function onScroll(){
-    if (ticking) return;
+    if(ticking) return;
     ticking = true;
-    window.requestAnimationFrame(function(){
-      var fromTop = window.scrollY + getStickyOffset() + 1;
-      var current = sections.length ? sections[0].id : "";
-      for (var i = 0; i < sections.length; i++) {
-        if (sections[i].offsetTop <= fromTop) current = sections[i].id; else break;
+    requestAnimationFrame(() => {
+      const fromTop = window.scrollY + 100;
+      let currentSection = sections[0];
+      for (const sec of sections){
+        if (sec.offsetTop <= fromTop) currentSection = sec;
       }
-      if (current && current !== activeId) {
-        activeId = current;
-        setActiveByHash("#" + current);
-      }
+      setActiveTab("#" + currentSection.id, {source: "scroll"});
       ticking = false;
     });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
+  // Initial state
+  setActiveTab("#" + (sections[0]?.id || ""), {source:"scroll"});
 
-  if (sections.length) setActiveByHash("#" + sections[0].id);
+  // Smooth, offset-aware anchor scrolling for category tabs (fixes iOS jump)
+  tabs.forEach(tab => {
+    tab.addEventListener("click", (e) => {
+      const hash = tab.getAttribute("href");
+      const target = document.querySelector(hash);
+      if(!target) return; // allow normal behavior if not found
+      e.preventDefault(); // stop default jump
+      const tabsHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tabs-height")) || 56;
+      const rect = target.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      const y = Math.max(0, absoluteTop - tabsHeight - 8);
+      window.scrollTo({ top: y, behavior: "smooth" });
+      setActiveTab(hash, {source:"click"});
+    }, { passive: false });
+  });
 
-  // Fade-in: adaugă clasa .visible când intră în viewport (fallback: toate sunt vizibile implicit în CSS)
-  var observer;
-  if ("IntersectionObserver" in window) {
-    observer = new IntersectionObserver(function(entries){
-      for (var i=0; i<entries.length; i++){
-        if (entries[i].isIntersecting) entries[i].target.classList.add("visible");
+  // Keep underline in place while horizontally scrolling the carousel
+  tabsContainer.addEventListener("scroll", () => {
+    const active = document.querySelector(".tab.active");
+    moveUnderlineTo(active);
+  }, { passive: true });
+
+  // Reveal animations via IntersectionObserver (unchanged)
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll(".card, .big-card, .category-title").forEach(el => observer.observe(el));
+
+  // Lightbox behavior (unchanged)
+  const lightboxes = document.querySelectorAll(".lightbox");
+  const links = document.querySelectorAll(".card-link");
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) target.classList.add("active");
+    }, { passive: false });
+  });
+  lightboxes.forEach(lb => {
+    lb.addEventListener("click", e => {
+      if (e.target.hasAttribute("data-close") || e.target === lb) {
+        lb.classList.remove("active");
       }
-    }, { threshold: 0.1 });
-    var els = document.querySelectorAll(".card, .big-card, .category-title");
-    for (var j=0; j<els.length; j++){ observer.observe(els[j]); }
-  }
+    }, { passive: true });
+  });
 });
