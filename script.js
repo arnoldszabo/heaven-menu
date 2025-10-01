@@ -4,17 +4,13 @@
 // - Carousel fixes (momentum, touch handling)
 // - Passive listeners to avoid scroll blocking
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { document.documentElement.classList.add("js-enabled");
   const tabs = Array.from(document.querySelectorAll(".tab"));
   const tabsContainer = document.querySelector(".tabs");
   const underline = document.querySelector(".tab-underline");
   const sections = Array.from(document.querySelectorAll("main section"));
   let currentHash = "";
   let ticking = false;
-
-  function getScrollY(){
-    return window.scrollY || document.documentElement.scrollTop || 0;
-  }
 
   // Compute and expose --tabs-height for CSS scroll-margin-top
   function updateTabsMetrics(){
@@ -24,12 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTabsMetrics();
   window.addEventListener("resize", updateTabsMetrics, { passive: true });
   window.addEventListener("orientationchange", updateTabsMetrics, { passive: true });
-
-  function resizeUnderlineHandler(){
-    const active = document.querySelector('.tab.active');
-    moveUnderlineTo(active);
-  }
-  window.addEventListener('resize', resizeUnderlineHandler, { passive: true });
 
   // Helper: position underline under visible active tab
   function moveUnderlineTo(el){
@@ -62,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const fromTop = getScrollY() + 100;
+      const fromTop = window.scrollY + 100;
       let currentSection = sections[0];
       for (const sec of sections){
         if (sec.offsetTop <= fromTop) currentSection = sec;
@@ -98,11 +88,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { passive: true });
 
   // Reveal animations via IntersectionObserver (unchanged)
+  let ioFailedOnce = false;
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add("visible");
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
     });
-  }, {threshold: 0.05, rootMargin: '64px 0px 64px 0px'});
+  }, {root: null, threshold: 0, rootMargin: '150% 0px 150% 0px'});
+
+  function revealInViewportFallback(){
+    const els = document.querySelectorAll('.card, .big-card, .category-title');
+    const vw = window.innerHeight || document.documentElement.clientHeight || 0;
+    els.forEach(el => {
+      if (el.classList.contains('visible')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < vw*1.2 && r.bottom > -vw*0.2) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  ['load','pageshow'].forEach(ev=>window.addEventListener(ev, ()=>setTimeout(revealInViewportFallback, 120), {passive:true}));
+  window.addEventListener('scroll', ()=> { if (!ioFailedOnce) { ioFailedOnce = true; setTimeout(()=>{ioFailedOnce=false; revealInViewportFallback();}, 120); } }, {passive:true});
   document.querySelectorAll(".card, .big-card, .category-title").forEach(el => observer.observe(el));
 
   // Lightbox behavior (unchanged)

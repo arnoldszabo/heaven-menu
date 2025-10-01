@@ -180,34 +180,5 @@ h1{
 .lightbox.active .lightbox-img{transform:scale(1);}
 .close-btn{position:absolute;top:15px;right:15px;background:none;border:none;font-size:40px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,0.8);cursor:pointer;}
 
-
-/* --- Android stability & perf hardening (no visual change) --- */
-/* Prevent blending bugs with sticky + backdrop-filter on some Android GPUs */
-.hero, .tabs {
-  isolation: isolate;
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* Give sections cheap occlusion culling and faster first paint offscreen */
-.section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 800px; /* reserve space to avoid layout jumps */
-}
-
-/* Avoid rare paint-skipping on images/cards during fast scroll on low-end Android */
-.card, .simple-card.big-card, .card-img {
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* Ensure the background fixed layer never interferes with painting order */
-.background-overlay {
-  contain: strict;
-}
-
-/* Make sure sticky tabs create a stacking context independent from content */
-.tabs {
-  will-change: scroll-position;
-  contain: layout paint style;
-}
+/* JS-enabled reveal guard */
+html:not(.js-enabled) .card, html:not(.js-enabled) .simple-card.big-card, html:not(.js-enabled) .section h2.category-title { opacity:1 !important; transform:none !important; }
