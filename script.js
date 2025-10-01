@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentHash = "";
   let ticking = false;
 
+  function getScrollY(){
+    return window.scrollY || document.documentElement.scrollTop || 0;
+  }
+
   // Compute and expose --tabs-height for CSS scroll-margin-top
   function updateTabsMetrics(){
     const h = Math.round(tabsContainer.getBoundingClientRect().height);
@@ -20,6 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTabsMetrics();
   window.addEventListener("resize", updateTabsMetrics, { passive: true });
   window.addEventListener("orientationchange", updateTabsMetrics, { passive: true });
+
+  function resizeUnderlineHandler(){
+    const active = document.querySelector('.tab.active');
+    moveUnderlineTo(active);
+  }
+  window.addEventListener('resize', resizeUnderlineHandler, { passive: true });
 
   // Helper: position underline under visible active tab
   function moveUnderlineTo(el){
@@ -52,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const fromTop = window.scrollY + 100;
+      const fromTop = getScrollY() + 100;
       let currentSection = sections[0];
       for (const sec of sections){
         if (sec.offsetTop <= fromTop) currentSection = sec;
@@ -92,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(e => {
       if (e.isIntersecting) e.target.classList.add("visible");
     });
-  }, {threshold: 0.1});
+  }, {threshold: 0.05, rootMargin: '64px 0px 64px 0px'});
   document.querySelectorAll(".card, .big-card, .category-title").forEach(el => observer.observe(el));
 
   // Lightbox behavior (unchanged)
