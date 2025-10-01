@@ -4,6 +4,42 @@ document.addEventListener("DOMContentLoaded",()=>{
   const sections = [...document.querySelectorAll("section")];
   let currentHash = "";
 
+// --- Performance: throttle scroll with rAF and fix underline position when tabs scroll ---
+const tabsContainer = document.querySelector(".tabs");
+
+function updateUnderlineFor(active){
+  if(!active || !underline) return;
+  const left = active.offsetLeft - tabsContainer.scrollLeft;
+  underline.style.width = active.getBoundingClientRect().width + "px";
+  underline.style.transform = `translateX(${left}px)`;
+}
+
+let ticking = false;
+function onScrollTick(){
+  const fromTop = window.scrollY + 120; // account for sticky tabs height
+  let currentSection = sections[0];
+  for(const sec of sections){
+    if(sec.offsetTop <= fromTop) currentSection = sec;
+    else break;
+  }
+  setActiveTab("#" + currentSection.id);
+  ticking = false;
+}
+
+window.addEventListener("scroll",()=>{
+  if(!ticking){
+    window.requestAnimationFrame(onScrollTick);
+    ticking = true;
+  }
+}, {passive:true});
+
+// Reposition underline when the tabs list scrolls horizontally (e.g., user pans the carousel)
+tabsContainer.addEventListener("scroll", ()=>{
+  const active = tabsContainer.querySelector(".tab.active");
+  updateUnderlineFor(active);
+}, {passive:true});
+
+
   function setActiveTab(hash){
     if(hash === currentHash) return;
     currentHash = hash;
@@ -11,9 +47,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     const active = document.querySelector(`.tab[href="${hash}"]`);
     if(active){
       active.classList.add("active");
-      const rect = active.getBoundingClientRect();
-      underline.style.width = rect.width + "px";
-      underline.style.transform = `translateX(${active.offsetLeft}px)`;
+      updateUnderlineFor(active);
       active.scrollIntoView({behavior:"smooth",inline:"center"});
     }
   }
@@ -30,6 +64,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
 
   setActiveTab("#" + sections[0].id);
+  updateUnderlineFor(document.querySelector('.tab.active'));
 
   const observer = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
