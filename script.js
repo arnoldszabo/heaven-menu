@@ -4,40 +4,36 @@ document.addEventListener("DOMContentLoaded",()=>{
   const sections = [...document.querySelectorAll("section")];
   let currentHash = "";
 
-// --- Performance: throttle scroll with rAF and fix underline position when tabs scroll ---
-const tabsContainer = document.querySelector(".tabs");
+// ---- Smooth vertical scrolling focus; keep carousel secondary ----
+const isIOS = /iP(hone|ad|od)/.test(navigator.platform) || 
+              (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
 
-function updateUnderlineFor(active){
-  if(!active || !underline) return;
-  const left = active.offsetLeft - tabsContainer.scrollLeft;
-  underline.style.width = active.getBoundingClientRect().width + "px";
-  underline.style.transform = `translateX(${left}px)`;
+const tabsEl = document.querySelector('.tabs');
+const tabsHeight = () => (tabsEl ? tabsEl.getBoundingClientRect().height : 0);
+
+function scrollToSectionId(id, smooth=true){
+  const target = document.getElementById(id);
+  if(!target) return;
+  const y = target.getBoundingClientRect().top + window.pageYOffset - tabsHeight() - 8;
+  const behavior = (smooth && !isIOS) ? 'smooth' : 'auto';
+  window.scrollTo({ top: Math.max(0, y), behavior });
+  if(history.replaceState){
+    history.replaceState(null, '', '#' + id);
+  } else {
+    window.location.hash = id;
+  }
 }
 
-let ticking = false;
-function onScrollTick(){
-  const fromTop = window.scrollY + 120; // account for sticky tabs height
-  let currentSection = sections[0];
-  for(const sec of sections){
-    if(sec.offsetTop <= fromTop) currentSection = sec;
-    else break;
+function applyActive(hash){
+  const links = document.querySelectorAll('.tab');
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+  const active = document.querySelector('.tab.active');
+  if (active && underline){
+    const left = active.offsetLeft - (tabsEl ? tabsEl.scrollLeft : 0);
+    underline.style.width = active.getBoundingClientRect().width + 'px';
+    underline.style.transform = `translateX(${left}px)`;
   }
-  setActiveTab("#" + currentSection.id);
-  ticking = false;
 }
-
-window.addEventListener("scroll",()=>{
-  if(!ticking){
-    window.requestAnimationFrame(onScrollTick);
-    ticking = true;
-  }
-}, {passive:true});
-
-// Reposition underline when the tabs list scrolls horizontally (e.g., user pans the carousel)
-tabsContainer.addEventListener("scroll", ()=>{
-  const active = tabsContainer.querySelector(".tab.active");
-  updateUnderlineFor(active);
-}, {passive:true});
 
 
   function setActiveTab(hash){
@@ -47,7 +43,9 @@ tabsContainer.addEventListener("scroll", ()=>{
     const active = document.querySelector(`.tab[href="${hash}"]`);
     if(active){
       active.classList.add("active");
-      updateUnderlineFor(active);
+      const rect = active.getBoundingClientRect();
+      underline.style.width = rect.width + "px";
+      underline.style.transform = `translateX(${active.offsetLeft}px)`;
       active.scrollIntoView({behavior:"smooth",inline:"center"});
     }
   }
@@ -64,7 +62,6 @@ tabsContainer.addEventListener("scroll", ()=>{
   });
 
   setActiveTab("#" + sections[0].id);
-  updateUnderlineFor(document.querySelector('.tab.active'));
 
   const observer = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
@@ -90,3 +87,18 @@ tabsContainer.addEventListener("scroll", ()=>{
     });
   });
 });
+
+
+// Delegate clicks on .tab anchors
+document.addEventListener('click', (e)=>{
+  const a = e.target.closest('.tab');
+  if(!a) return;
+  const href = a.getAttribute('href');
+  if(!href || !href.startsWith('#')) return;
+  e.preventDefault();
+  const id = href.slice(1);
+  scrollToSectionId(id, true);
+  applyActive('#' + id);
+}, {passive:false});
+
+if(tabsEl){ tabsEl.addEventListener('scroll', ()=>applyActive(currentHash||('#'+sections[0].id)), {passive:true}); }
