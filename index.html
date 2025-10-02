@@ -8,60 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!-- Inline CSS fallback: ensures styling even if the file path breaks on GitHub Pages -->
-  <style id="inline-css-fallback">
-
-/* --- Scroll performance tuning --- */
-.tabs{will-change: transform; transform: translateZ(0); background: rgba(255,255,255,0.85); backdrop-filter: none;}
-.card,.simple-card.big-card{backdrop-filter:none;-webkit-backdrop-filter:none;}
-*{contain-intrinsic-size:auto 1px; contain: content;}
-html{scroll-behavior:auto;}
-
-body{margin:0;font-family:'Inter',sans-serif;color:#2B241C;
-background:url("img/bg.jpg") center/cover fixed no-repeat;position:relative;}
-.background-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:-1;}
-.hero{text-align:center;padding-bottom:1rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(3px);}
-.hero-img{width:100%;max-height:200px;object-fit:cover;border-bottom:1px solid #E6DED2;}
-h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
-
-.tabs{display:flex;gap:0.5rem;overflow-x:auto;white-space:nowrap;background:rgba(247,241,232,0.9);border-bottom:1px solid #E6DED2;position:sticky;top:0;z-index:10;padding:0.5rem 0.5rem 0.5rem 0.8rem;box-shadow:0 2px 6px rgba(0,0,0,0.05);scrollbar-width:none;}
-.tabs::-webkit-scrollbar{display:none;}
-.tab{position:relative;display:inline-block;padding:0.4rem 1rem;border-radius:20px;border:1px solid #C8A27A;background:#fff;color:#2B241C;text-decoration:none;font-weight:600;transition:background 0.2s,color 0.2s;}
-.tab:hover{background:#f0e4d5;}
-.tab.active{background:#8B5E34;color:white;}
-.tab-underline{position:absolute;bottom:0;left:0;height:3px;width:0;background:#8B5E34;border-radius:2px;transition:all 0.25s ease;}
-
-.container{padding:1rem;max-width:800px;margin:auto;}
-.section h2.category-title{display:block;text-align:center;font-family:'Playfair Display', serif;font-size:1.4rem;font-weight:600;background:rgba(255,253,249,0.85);backdrop-filter:blur(3px);padding:0.3rem 1rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin:1rem auto;opacity:0;transform:translateY(10px);transition:opacity 0.3s ease, transform 0.3s ease;}
-.section h2.category-title.visible {opacity:1;transform:translateY(0);}
-
-.card,.simple-card.big-card{display:flex;flex-direction:column;align-items:stretch;background:rgba(255,253,249,0.85);backdrop-filter:blur(3px);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.15);padding:0.8rem 1rem;margin:0.6rem 0;gap:0.5rem;opacity:0;transform:translateY(10px);transition:opacity 0.3s ease,transform 0.3s ease;}
-.card.visible,.simple-card.big-card.visible{opacity:1;transform:translateY(0);}
-
-.simple-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #e6ded2;}
-.simple-row:last-child{border-bottom:none;}
-.simple-name{font-weight:500;}
-.simple-meta{font-weight:600;color:#8B5E34;}
-
-.card-link{text-decoration:none;display:block;color:inherit;}
-.card{flex-direction:row;align-items:center;justify-content:space-between;}
-.card-text{flex:1;}
-.card-text h3{margin:0 0 0.3rem 0;font-size:1rem;}
-.desc{font-size:0.9rem;margin:0;color:#2B241C;}
-.gramaj{font-size:0.8rem;color:#7a6e60;margin:0.2rem 0 0.3rem 0;}
-.price{font-weight:600;color:#8B5E34;margin-top:0.4rem;}
-.card-img{width:140px;height:140px;object-fit:contain;background:#fff;border-radius:8px;transition:transform 0.2s ease;}
-
-.tags{display:flex;flex-wrap:wrap;gap:0.3rem;padding:0;margin:0.3rem 0 0;list-style:none;}
-.tags li{background:#F4E7D7;border:1px solid #EBD5BE;border-radius:999px;padding:2px 6px;font-size:0.7rem;}
-
-.lightbox{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,0.85);opacity:0;pointer-events:none;transition:opacity 0.3s ease;z-index:100;}
-.lightbox.active{opacity:1;pointer-events:auto;}
-.lightbox-img{max-width:90%;max-height:90%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.5);transform:scale(0.95);transition:transform 0.3s ease;}
-.lightbox.active .lightbox-img{transform:scale(1);}
-.close-btn{position:absolute;top:15px;right:15px;background:none;border:none;font-size:40px;color:white;text-shadow:0 2px 6px rgba(0,0,0,0.8);cursor:pointer;}
-
-  </style>
 </head>
 <body>
   <div class="background-overlay"></div>
@@ -69,7 +15,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
     <img src="img/hero.jpg" alt="Poza meniu" class="hero-img">
     <h1>MENIU</h1>
   </header>
-  <nav class="tabs"><a href="#superstar" class="tab">SUPERSTAR</a><a href="#pestesifructedemare" class="tab">PEȘTE ȘI FRUCTE DE MARE</a><a href="#preparatepui" class="tab">PREPARATE PUI</a><a href="#preparateporc" class="tab">PREPARATE PORC</a><a href="#salate" class="tab">SALATE</a><a href="#pastesirisotto" class="tab">PASTE ȘI RISOTTO</a><a href="#burgers" class="tab">BURGERS</a><a href="#desert" class="tab">DESERT</a><a href="#garnituri" class="tab">GARNITURI</a><a href="#sidesalads" class="tab">SIDE SALADS</a><a href="#sosuri" class="tab">SOSURI</a><span class="tab-underline"></span></nav>
+  
   <main class="container">
         <section id="superstar" class="section">
           <h2 class="category-title">SUPERSTAR</h2>
@@ -80,7 +26,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Antricot de vită pe pat de salată </h3>
                       <p class="desc">salată mixtă, rosii cherry, parmezan, sos de piper verde</p>
                       <p class="gramaj">350/100/60g</p>
-                      <ul class="tags"><li>Lactoza</li><li>Mustar</li></ul>
+                      
                       <p class="price">139 RON</p>
                     </div>
                     <img src="img/1.jpg" alt="Antricot de vită pe pat de salată " class="card-img">
@@ -93,7 +39,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Costițe de porc</h3>
                       <p class="desc">glazurate în sos BBQ la cuptor cu piure de cartofi, salată coreslaw </p>
                       <p class="gramaj">400/200g</p>
-                      <ul class="tags"><li>Lactoza</li></ul>
+                      
                       <p class="price">77 RON</p>
                     </div>
                     <img src="img/2.jpeg" alt="Costițe de porc" class="card-img">
@@ -106,7 +52,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Pulpă de rață confit</h3>
                       <p class="desc">Cu varză roșie călită, cartofi “rösti” și demi-glace de ciocolată</p>
                       <p class="gramaj">200/150/100g</p>
-                      <ul class="tags"><li>Gluten</li><li>Lactoza</li><li>Oua</li></ul>
+                      
                       <p class="price">60 RON</p>
                     </div>
                     <img src="img/3.jpg" alt="Pulpă de rață confit" class="card-img">
@@ -119,7 +65,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>File de somon cu legume blanșate</h3>
                       <p class="desc">conopidă, morcovi, fasole verde</p>
                       <p class="gramaj">180/180g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">79 RON</p>
                     </div>
                     <img src="img/4.jpg" alt="File de somon cu legume blanșate" class="card-img">
@@ -132,7 +78,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Paste cu vită</h3>
                       <p class="desc">Cu sos: ciuperci de pădure și parmezan</p>
                       <p class="gramaj">400 g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">52RON</p>
                     </div>
                     <img src="img/5.jpg" alt="Paste cu vită" class="card-img">
@@ -145,7 +91,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Tentacule de calamar pe pat de salată</h3>
                       <p class="desc">tentacule de calamar, inele de ceapă, salată mixtă, sos aioli cu șofran</p>
                       <p class="gramaj">200/60 g    </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">52RON</p>
                     </div>
                     <img src="img/6.jpg" alt="Tentacule de calamar pe pat de salată" class="card-img">
@@ -158,7 +104,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Risotto cu creveți</h3>
                       <p class="desc">șofran și creveți</p>
                       <p class="gramaj">400g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">51RON</p>
                     </div>
                     <img src="img/7.jpg" alt="Risotto cu creveți" class="card-img">
@@ -171,7 +117,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Paste fructe mare</h3>
                       <p class="desc">linguini, midii, creveți, sos vin alb</p>
                       <p class="gramaj">450 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">52RON</p>
                     </div>
                     <img src="img/8.jpg" alt="Paste fructe mare" class="card-img">
@@ -184,7 +130,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>EXTRA CHEESY Burger</h3>
                       <p class="desc">chiflă, carne vită Black Angus, salată, ardei copt, ceapă caramelizată, bacon, cașcaval, sos burger</p>
                       <p class="gramaj">450/150/60g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">54RON</p>
                     </div>
                     <img src="img/9.jpg" alt="EXTRA CHEESY Burger" class="card-img">
@@ -202,7 +148,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>File de somon cu Linguini</h3>
                       <p class="desc">în sos cremos și baby spanac</p>
                       <p class="gramaj">180/180 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">78 RON</p>
                     </div>
                     <img src="img/10.jpeg" alt="File de somon cu Linguini" class="card-img">
@@ -215,7 +161,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Fish &amp; Chips</h3>
                       <p class="desc">Pește cod în aluat de bere, cartofi wedges, sos tartar</p>
                       <p class="gramaj">180/180/50 g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price"> 51 RON</p>
                     </div>
                     <img src="img/11.jpeg" alt="Fish &amp; Chips" class="card-img">
@@ -228,7 +174,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Creveți în unt cu usturoi</h3>
                       <p class="desc">Creveți 10 buc, frunze de pătrunjel verde,salată mixtă</p>
                       <p class="gramaj">200g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">48 RON</p>
                     </div>
                     <img src="img/12.jpg" alt="Creveți în unt cu usturoi" class="card-img">
@@ -241,7 +187,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Calamari în crustă crocantă</h3>
                       <p class="desc">calamari, cartofi wedges, aioli de șofran, lămâie</p>
                       <p class="gramaj">200/200/60 g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">49 RON</p>
                     </div>
                     <img src="img/13.jpg" alt="Calamari în crustă crocantă" class="card-img">
@@ -259,7 +205,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Pulpă dezosată de pui</h3>
                       <p class="desc">la tigaie cu peperonata și cartofi dollar chips</p>
                       <p class="gramaj">200/200 g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">  47 RON</p>
                     </div>
                     <img src="img/14.jpg" alt="Pulpă dezosată de pui" class="card-img">
@@ -272,7 +218,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Piept de pui</h3>
                       <p class="desc">Cu cartofi wedges, sos din ciuperci de pădure</p>
                       <p class="gramaj">180/180/40 g  </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">47 RON</p>
                     </div>
                     <img src="img/15.jpg" alt="Piept de pui" class="card-img">
@@ -285,7 +231,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Șnițel uriaș de pui</h3>
                       <p class="desc">Cu cartofi prăjiti și parmezan</p>
                       <p class="gramaj">200/180 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">47 RON</p>
                     </div>
                     <img src="img/16.jpg" alt="Șnițel uriaș de pui" class="card-img">
@@ -298,7 +244,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Aripioare picante 6 buc cu cartofi wedges</h3>
                       <p class="desc">aripi pui, cartofi wedges, sos usturoi</p>
                       <p class="gramaj">300/200 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">   45 RON</p>
                     </div>
                     <img src="img/17.jpg" alt="Aripioare picante 6 buc cu cartofi wedges" class="card-img">
@@ -316,7 +262,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Ceafă de porc </h3>
                       <p class="desc">cartofi parmentine cu rozmarin și ceapă eșalotă confit</p>
                       <p class="gramaj">180/200 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">48 RON</p>
                     </div>
                     <img src="img/18.jpeg" alt="Ceafă de porc " class="card-img">
@@ -334,7 +280,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Salată Cezar cu creveți</h3>
                       <p class="desc">salată, crutoane, parmezan, dressing cezar, creveți</p>
                       <p class="gramaj">400 g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price"> 46 RON</p>
                     </div>
                     <img src="img/19.jpg" alt="Salată Cezar cu creveți" class="card-img">
@@ -347,7 +293,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Salată Cezar cu piep de pui</h3>
                       <p class="desc">salată, crutoane, parmezan, dressing cezar, carne pui</p>
                       <p class="gramaj">400 g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">42 RON</p>
                     </div>
                     <img src="img/20.jpg" alt="Salată Cezar cu piep de pui" class="card-img">
@@ -360,7 +306,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Salată de ton</h3>
                       <p class="desc">salată, paste penne, roșii cherry, măsline, porumb, ton</p>
                       <p class="gramaj">400 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">  42 RON</p>
                     </div>
                     <img src="img/21.jpg" alt="Salată de ton" class="card-img">
@@ -378,7 +324,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Risotto pui</h3>
                       <p class="desc">șofran și piept de pui</p>
                       <p class="gramaj">400 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">48RON</p>
                     </div>
                     <img src="img/7.jpg" alt="Risotto pui" class="card-img">
@@ -391,7 +337,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Paste carbonara</h3>
                       <p class="desc">paste, pancetta, parmezan, cremă de gătit, gălbenuș de ou</p>
                       <p class="gramaj">450g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">47ron</p>
                     </div>
                     <img src="img/22.jpg" alt="Paste carbonara" class="card-img">
@@ -404,7 +350,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Paste bologneze</h3>
                       <p class="desc">paste, ragu de vită, sos roșii, parmezan</p>
                       <p class="gramaj">500g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">46ron</p>
                     </div>
                     <img src="img/23.jpg" alt="Paste bologneze" class="card-img">
@@ -422,7 +368,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Smash burger</h3>
                       <p class="desc"></p>
                       <p class="gramaj">0</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">0</p>
                     </div>
                     <img src="img/placeholder.jpg" alt="Smash burger" class="card-img">
@@ -435,7 +381,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Extra Classic Burger</h3>
                       <p class="desc">chiflă, carne vită Black Angus, salată, castraveți murați, roșii, ceapă caramelizată, bacon, cașcaval, sos burger</p>
                       <p class="gramaj">460/150/60g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">53 RON</p>
                     </div>
                     <img src="img/24.jpg" alt="Extra Classic Burger" class="card-img">
@@ -448,7 +394,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Chicken burger</h3>
                       <p class="desc">chiflă, piept de pui, salată , roșii, castraveți, sos burger </p>
                       <p class="gramaj">350/150/60g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">51 RON</p>
                     </div>
                     <img src="img/25.jpg" alt="Chicken burger" class="card-img">
@@ -461,7 +407,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Vegetarian Burger </h3>
                       <p class="desc">chiflă, chiftea vegetariană de soia, salată, roșii, humus, cașcaval, sos burger</p>
                       <p class="gramaj">250/150/60g </p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">49 RON</p>
                     </div>
                     <img src="img/26.jpg" alt="Vegetarian Burger " class="card-img">
@@ -479,7 +425,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Papanas</h3>
                       <p class="desc"></p>
                       <p class="gramaj">180 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price"> 32 RON</p>
                     </div>
                     <img src="img/placeholder.jpg" alt="Papanas" class="card-img">
@@ -492,7 +438,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Lava cake</h3>
                       <p class="desc"></p>
                       <p class="gramaj">180 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">32 RON</p>
                     </div>
                     <img src="img/27.jpg" alt="Lava cake" class="card-img">
@@ -505,7 +451,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
                       <h3>Mango paradise</h3>
                       <p class="desc"></p>
                       <p class="gramaj">180 g</p>
-                      <ul class="tags"></ul>
+                      
                       <p class="price">32 RON</p>
                     </div>
                     <img src="img/28.png" alt="Mango paradise" class="card-img">
@@ -600,7 +546,6 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
           </div>
         </section>
         </main>
-  <div id="lb1" class="lightbox"><img src="img/1.jpg" alt="Antricot de vită pe pat de salată " class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb2" class="lightbox"><img src="img/2.jpeg" alt="Costițe de porc" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb3" class="lightbox"><img src="img/3.jpg" alt="Pulpă de rață confit" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb4" class="lightbox"><img src="img/4.jpg" alt="File de somon cu legume blanșate" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb5" class="lightbox"><img src="img/5.jpg" alt="Paste cu vită" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb6" class="lightbox"><img src="img/6.jpg" alt="Tentacule de calamar pe pat de salată" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb7" class="lightbox"><img src="img/7.jpg" alt="Risotto cu creveți" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb8" class="lightbox"><img src="img/8.jpg" alt="Paste fructe mare" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb9" class="lightbox"><img src="img/9.jpg" alt="EXTRA CHEESY Burger" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb10" class="lightbox"><img src="img/10.jpeg" alt="File de somon cu Linguini" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb11" class="lightbox"><img src="img/11.jpeg" alt="Fish &amp; Chips" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb12" class="lightbox"><img src="img/12.jpg" alt="Creveți în unt cu usturoi" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb13" class="lightbox"><img src="img/13.jpg" alt="Calamari în crustă crocantă" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb14" class="lightbox"><img src="img/14.jpg" alt="Pulpă dezosată de pui" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb15" class="lightbox"><img src="img/15.jpg" alt="Piept de pui" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb16" class="lightbox"><img src="img/16.jpg" alt="Șnițel uriaș de pui" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb17" class="lightbox"><img src="img/17.jpg" alt="Aripioare picante 6 buc cu cartofi wedges" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb18" class="lightbox"><img src="img/18.jpeg" alt="Ceafă de porc " class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb19" class="lightbox"><img src="img/19.jpg" alt="Salată Cezar cu creveți" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb20" class="lightbox"><img src="img/20.jpg" alt="Salată Cezar cu piep de pui" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb21" class="lightbox"><img src="img/21.jpg" alt="Salată de ton" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb22" class="lightbox"><img src="img/7.jpg" alt="Risotto pui" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb23" class="lightbox"><img src="img/22.jpg" alt="Paste carbonara" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb24" class="lightbox"><img src="img/23.jpg" alt="Paste bologneze" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb25" class="lightbox"><img src="img/placeholder.jpg" alt="Smash burger" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb26" class="lightbox"><img src="img/24.jpg" alt="Extra Classic Burger" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb27" class="lightbox"><img src="img/25.jpg" alt="Chicken burger" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb28" class="lightbox"><img src="img/26.jpg" alt="Vegetarian Burger " class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb29" class="lightbox"><img src="img/placeholder.jpg" alt="Papanas" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb30" class="lightbox"><img src="img/27.jpg" alt="Lava cake" class="lightbox-img"><button class="close-btn" data-close>×</button></div><div id="lb31" class="lightbox"><img src="img/28.png" alt="Mango paradise" class="lightbox-img"><button class="close-btn" data-close>×</button></div>
-  <script src="script.js" defer></script>
+  <div id="lb1" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/1.jpg" alt="Antricot de vită pe pat de salată " class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb2" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/2.jpeg" alt="Costițe de porc" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb3" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/3.jpg" alt="Pulpă de rață confit" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb4" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/4.jpg" alt="File de somon cu legume blanșate" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb5" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/5.jpg" alt="Paste cu vită" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb6" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/6.jpg" alt="Tentacule de calamar pe pat de salată" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb7" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/7.jpg" alt="Risotto cu creveți" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb8" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/8.jpg" alt="Paste fructe mare" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb9" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/9.jpg" alt="EXTRA CHEESY Burger" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb10" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/10.jpeg" alt="File de somon cu Linguini" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb11" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/11.jpeg" alt="Fish &amp;amp; Chips" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb12" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/12.jpg" alt="Creveți în unt cu usturoi" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb13" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/13.jpg" alt="Calamari în crustă crocantă" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb14" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/14.jpg" alt="Pulpă dezosată de pui" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb15" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/15.jpg" alt="Piept de pui" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb16" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/16.jpg" alt="Șnițel uriaș de pui" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb17" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/17.jpg" alt="Aripioare picante 6 buc cu cartofi wedges" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb18" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/18.jpeg" alt="Ceafă de porc " class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb19" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/19.jpg" alt="Salată Cezar cu creveți" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb20" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/20.jpg" alt="Salată Cezar cu piep de pui" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb21" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/21.jpg" alt="Salată de ton" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb22" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/7.jpg" alt="Risotto pui" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb23" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/22.jpg" alt="Paste carbonara" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb24" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/23.jpg" alt="Paste bologneze" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb25" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/placeholder.jpg" alt="Smash burger" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb26" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/24.jpg" alt="Extra Classic Burger" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb27" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/25.jpg" alt="Chicken burger" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb28" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/26.jpg" alt="Vegetarian Burger " class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb29" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/placeholder.jpg" alt="Papanas" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb30" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/27.jpg" alt="Lava cake" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div><div id="lb31" class="lightbox"><a href="##" class="lightbox__backdrop" aria-label="Închide imaginea"></a><img src="img/28.png" alt="Mango paradise" class="lightbox-img"><a href="##" class="close-btn" aria-label="Închide">×</a></div>
 </body>
 </html>
