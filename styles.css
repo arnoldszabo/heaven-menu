@@ -23,8 +23,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 .simple-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #e6ded2;}
 .simple-row:last-child{border-bottom:none;}
 .simple-name{font-weight:500;}
-.simple-meta{font-weight:bold;color:#ed0909;}
-.simple-price{font-weight:bold;color:#000000;}
+.simple-meta{font-weight:bold;color:#000000;}
 
 .card-link{text-decoration:none;display:block;color:inherit;}
 .card{flex-direction:row;align-items:center;justify-content:space-between;}
