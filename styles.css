@@ -23,7 +23,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 .simple-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #e6ded2;}
 .simple-row:last-child{border-bottom:none;}
 .simple-name{font-weight:500;}
-
+.simple-meta{font-weight:bold;color:#ed0909;}
 
 .card-link{text-decoration:none;display:block;color:inherit;}
 .card{flex-direction:row;align-items:center;justify-content:space-between;}
@@ -31,7 +31,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 .card-text h3{margin:0 0 0.3rem 0;font-size:1rem;}
 .desc{font-size:0.9rem;margin:0;color:#2B241C;}
 .gramaj{font-size:0.8rem;color:#7a6e60;margin:0.2rem 0 0.3rem 0;}
-
+.price{font-weight:bold;font-size:1.14rem;color:#ed0909;margin-top:0.8rem;}
 .card-img{width:140px;height:140px;object-fit:contain;background:#fff;border-radius:8px;transition:transform 0.2s ease;}
 
 .tags{display:flex;flex-wrap:wrap;gap:0.3rem;padding:0;margin:0.3rem 0 0;list-style:none;}
@@ -45,17 +45,3 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 
 .lightbox:target{opacity:1;pointer-events:auto;}
 .lightbox__backdrop{position:absolute;inset:0;display:block;content:'';}
-.simple-meta {
-  font-weight: 500;
-  color: #2B241C; /* neutral text */
-}
-
-.price {
-  display: inline-block;
-  background-color: #c94f4f; /* muted red */
-  color: #4e342e;           /* brown text */
-  font-weight: bold;
-  font-size: 1.3rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-}
