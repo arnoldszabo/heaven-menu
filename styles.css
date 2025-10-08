@@ -45,3 +45,22 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 
 .lightbox:target{opacity:1;pointer-events:auto;}
 .lightbox__backdrop{position:absolute;inset:0;display:block;content:'';}
+
+
+/* Secondary small description (card) */
+.desc-descriere {
+  font-size: 0.8rem;
+  color: #9a8b7a;
+  margin: 0.3rem 0 0 0;
+  font-style: italic;
+}
+
+
+/* Secondary small description for simple rows */
+.simple-desc-descriere {
+  font-size: 0.8rem;
+  color: #9a8b7a;
+  margin: 0.15rem 0 0.4rem 0;
+  padding-left: 0.25rem;
+  font-style: italic;
+}
