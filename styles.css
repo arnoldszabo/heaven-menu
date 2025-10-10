@@ -72,7 +72,7 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 
 .card.new {
   border-left: 6px solid #D64545; /* Elegant warm red accent */
-  background-color: #ffb09c; /* Slight warm tint to blend softly */
+  background-color: #FF474C; /* Slight warm tint to blend softly */
   position: relative;
   box-shadow: 0 2px 8px rgba(214, 69, 69, 0.15);
 }
