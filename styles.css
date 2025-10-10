@@ -47,6 +47,29 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 .lightbox__backdrop{position:absolute;inset:0;display:block;content:'';}
 
 
+
+
+
+
+/* Secondary small description (card) */
+.desc-descriere {
+  font-size: 0.8rem;
+  color: #9a8b7a;
+  margin: 0.3rem 0 0 0;
+  font-style: italic;
+}
+
+
+/* Secondary small description for simple rows */
+.simple-desc-descriere {
+  font-size: 0.8rem;
+  color: #9a8b7a;
+  margin: 0.15rem 0 0.4rem 0;
+  padding-left: 0.25rem;
+  font-style: italic;
+}
+
+
 .card.new {
   border-left: 6px solid #D64545; /* Elegant warm red accent */
   background-color: #fffdfc; /* Slight warm tint to blend softly */
@@ -69,30 +92,16 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 }
 
 
-a.card.link,
-a.card.link:visited,
-a.card.link:hover,
-a.card.link:active {
+a.card-link {
   text-decoration: none !important;
   color: inherit !important;
-  display: block; /* ensures the card fills the link area */
+  display: block;
 }
 
-
-/* Secondary small description (card) */
-.desc-descriere {
-  font-size: 0.8rem;
-  color: #9a8b7a;
-  margin: 0.3rem 0 0 0;
-  font-style: italic;
-}
-
-
-/* Secondary small description for simple rows */
-.simple-desc-descriere {
-  font-size: 0.8rem;
-  color: #9a8b7a;
-  margin: 0.15rem 0 0.4rem 0;
-  padding-left: 0.25rem;
-  font-style: italic;
+a.card-link h3,
+a.card-link p,
+a.card-link span,
+a.card-link div {
+  text-decoration: none !important;
+  color: inherit !important;
 }
