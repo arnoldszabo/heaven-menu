@@ -72,10 +72,23 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 
 .card.new {
   border-left: 6px solid #D64545; /* Elegant warm red accent */
-  background-color: #FF474C; /* Slight warm tint to blend softly */
+  background-color: #ffb09c; /* Slight warm tint to blend softly */
   position: relative;
   box-shadow: 0 2px 8px rgba(214, 69, 69, 0.15);
 }
 
+.card.new::before {
+  content: "NOU";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background-color: #D64545;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 
 
