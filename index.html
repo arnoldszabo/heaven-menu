@@ -9,10 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --overlay: rgba(0,0,0,.38);
+      --overlay: rgba(14,6,8,.65);
       --text: #fffdf8;
-      --btn-bg: #8B5E34;
-      --btn-bg-h: #744c2b;
+      --btn-bg: #a44319;
+      --btn-bg-h: #c45620;
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0}
@@ -22,7 +22,7 @@
       font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
         linear-gradient(var(--overlay), var(--overlay)),
-        url('img/bg.jpg') center/cover no-repeat fixed;
+        url('img/halloween-hero.webp') center/cover no-repeat fixed;
     }
     h1{
       font-family:'Playfair Display', serif;
@@ -30,6 +30,8 @@
       letter-spacing:.01em;margin:0 0 1.25rem 0;
       text-shadow:0 8px 24px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.45);
     }
+    main{padding:2.3rem 2rem;background:rgba(18,8,7,.46);border:1px solid rgba(255,146,66,.39);border-radius:20px;box-shadow:0 10px 45px rgba(0,0,0,.45);backdrop-filter:blur(5px);}
+    main::before{content:"✦ HALLOWEEN WEEKEND ✦";display:block;color:#ffad72;letter-spacing:.16em;font-size:.7rem;font-weight:700;margin-bottom:1rem}
     a.btn{
       display:inline-block;
       padding:.9rem 1.5rem;

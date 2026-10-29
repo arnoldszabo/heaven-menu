@@ -9,14 +9,79 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
+<link href="halloween.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="background-overlay" style="background-image: url('img/bg.jpg'); background-size: cover; background-attachment: fixed;"></div>
+<div class="background-overlay" ></div>
 <header class="hero">
-<img alt="Poza meniu" class="hero-img" src="img/hero.jpg"/>
+<img alt="Poza meniu" class="hero-img" src="img/halloween-hero.webp"/>
 <h1>MENIU</h1>
 </header>
 <main class="container">
+<section class="section halloween-section" id="halloween-specials" aria-labelledby="halloween-heading">
+<h2 class="category-title" id="halloween-heading">HALLOWEEN SPECIALS</h2>
+<p class="halloween-eyebrow">30 OCT — 01 NOV 2026</p>
+<p class="halloween-intro">3 preparate. 3 poțiuni. Un singur weekend.</p>
+<h3 class="halloween-subheading">DIN BUCĂTĂRIE</h3>
+<article class="card halloween-card halloween-card--food">
+<div class="card-text">
+<h3>BLOODBATH WINGS</h3>
+<p class="desc">Aripioare glazurate în sos BBQ lucios, cu cartofi wedges și sos toxic aioli.</p>
+<p class="gramaj">300/200 g</p>
+<p class="price">52 RON</p>
+</div>
+</article>
+<article class="card halloween-card halloween-card--food">
+<div class="card-text">
+<h3>WITCH’S NEST</h3>
+<p class="desc">Linguine într-un sos cremos verde, cu creveți, baby spanac, usturoi și parmezan.</p>
+<p class="gramaj">450 g</p>
+<p class="price">61 RON</p>
+</div>
+</article>
+<article class="card halloween-card halloween-card--food">
+<div class="card-text">
+<h3>DRACULA SMASH</h3>
+<p class="desc">Burger Black Angus cu chiflă neagră, cașcaval, salată, castraveți, ceapă roșie, bacon crocant, sos BBQ cu ketchup și sos toxic aioli.</p>
+<p class="gramaj">450/150/60 g</p>
+<p class="price">61 RON</p>
+</div>
+</article>
+<h3 class="halloween-subheading">DIN BAR</h3>
+<a class="card-link halloween-drink-link" href="#halloween-graveyard-dirt" aria-label="GRAVEYARD DIRT — 33 RON">
+<article class="card halloween-card halloween-card--drink">
+<div class="card-text">
+<h3>GRAVEYARD DIRT</h3>
+<p class="desc">Baileys, lichior de cafea, frișcă lichidă, sirop de ciocolată și Oreo mărunțit.</p>
+<p class="gramaj">120 ml</p>
+<p class="price">33 RON</p>
+</div>
+<img class="card-img" alt="GRAVEYARD DIRT" src="img/graveyard-dirt.webp" loading="lazy" decoding="async" />
+</article>
+</a>
+<a class="card-link halloween-drink-link" href="#halloween-jack-frost" aria-label="JACK FROST — 33 RON">
+<article class="card halloween-card halloween-card--drink">
+<div class="card-text">
+<h3>JACK FROST</h3>
+<p class="desc">Bacardi, sirop Blue Curaçao, sirop de vanilie, frișcă lichidă, suc de ananas și fulgi de cocos pe marginea paharului.</p>
+<p class="gramaj">160 ml</p>
+<p class="price">33 RON</p>
+</div>
+<img class="card-img" alt="JACK FROST" src="img/jack-frost.webp" loading="lazy" decoding="async" />
+</article>
+</a>
+<a class="card-link halloween-drink-link" href="#halloween-purple-people-eater" aria-label="PURPLE PEOPLE EATER — FĂRĂ ALCOOL — 29 RON">
+<article class="card halloween-card halloween-card--drink">
+<div class="card-text">
+<h3>PURPLE PEOPLE EATER <span class="nonalcoholic">FĂRĂ ALCOOL</span></h3>
+<p class="desc">Sirop grenadine, sirop Blue Curaçao, fresh de lămâie și apă carbogazoasă.</p>
+<p class="gramaj">220 ml</p>
+<p class="price">29 RON</p>
+</div>
+<img class="card-img" alt="PURPLE PEOPLE EATER" src="img/purple-people-eater.webp" loading="lazy" decoding="async" />
+</article>
+</a>
+</section>
 
  
 
@@ -1216,5 +1281,21 @@
 <a aria-label="Închide" class="close-btn" href="##">×</a>
 </div>
   
-<div style="position: fixed; top: 14px; right: 14px; z-index: 100000; pointer-events: auto;"><a href="menu-en.html" style="display:inline-block;background:rgba(255,255,255,0.9);padding:10px 14px;border-radius:12px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;color:#1f2937;box-shadow:0 4px 14px rgba(0,0,0,0.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);">English 🇬🇧</a></div></body>
+<div class="lightbox" id="halloween-graveyard-dirt">
+<a aria-label="Închide imaginea" class="lightbox__backdrop" href="#halloween-specials"></a>
+<img alt="GRAVEYARD DIRT" class="lightbox-img" src="img/graveyard-dirt.webp"/>
+<a aria-label="Închide imaginea" class="close-btn" href="#halloween-specials">×</a>
+</div>
+<div class="lightbox" id="halloween-jack-frost">
+<a aria-label="Închide imaginea" class="lightbox__backdrop" href="#halloween-specials"></a>
+<img alt="JACK FROST" class="lightbox-img" src="img/jack-frost.webp"/>
+<a aria-label="Închide imaginea" class="close-btn" href="#halloween-specials">×</a>
+</div>
+<div class="lightbox" id="halloween-purple-people-eater">
+<a aria-label="Închide imaginea" class="lightbox__backdrop" href="#halloween-specials"></a>
+<img alt="PURPLE PEOPLE EATER" class="lightbox-img" src="img/purple-people-eater.webp"/>
+<a aria-label="Închide imaginea" class="close-btn" href="#halloween-specials">×</a>
+</div>
+
+<div class="language-toggle"><a href="menu-en.html">English 🇬🇧</a></div></body>
 </html>

@@ -13,11 +13,11 @@ h1{font-family:'Playfair Display',serif;font-size:2rem;margin:0.5rem 0;}
 
 .container{padding:1rem;max-width:800px;margin:auto;}
 .section h2.category-title{display:block;text-align:center;font-family:'Playfair Display', serif;font-size:1.4rem;font-weight:600;background:rgba(255,253,249,0.85);backdrop-filter:blur(3px);padding:0.3rem 1rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin:1rem auto;}
-.js .section h2.category-title{opacity:0;transform:translateY(10px);transition:opacity 0.3s ease, transform 0.3s ease;}display:block;text-align:center;font-family:'Playfair Display', serif;font-size:1.4rem;font-weight:600;background:rgba(255,253,249,0.85);backdrop-filter:blur(3px);padding:0.3rem 1rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin:1rem auto;opacity:0;transform:translateY(10px);transition:opacity 0.3s ease, transform 0.3s ease;}
+.js .section h2.category-title{opacity:0;transform:translateY(10px);transition:opacity 0.3s ease, transform 0.3s ease;}
 .js .section h2.category-title.visible {opacity:1;transform:translateY(0);}
 
 .card,.simple-card.big-card{display:flex;flex-direction:column;align-items:stretch;background:rgba(255,253,249,0.88);backdrop-filter:blur(3px);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.15);padding:0.8rem 1rem;margin:0.6rem 0;gap:0.5rem;}
-.js .card,.js .simple-card.big-card{opacity:0;transform:translateY(10px);transition:opacity 0.3s ease,transform 0.3s ease;}display:flex;flex-direction:column;align-items:stretch;background:rgba(255,253,249,0.85);backdrop-filter:blur(3px);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.15);padding:0.8rem 1rem;margin:0.6rem 0;gap:0.5rem;opacity:0;transform:translateY(10px);transition:opacity 0.3s ease,transform 0.3s ease;}
+.js .card,.js .simple-card.big-card{opacity:0;transform:translateY(10px);transition:opacity 0.3s ease,transform 0.3s ease;}
 .js .card.visible,.js .simple-card.big-card.visible{opacity:1;transform:translateY(0);}
 
 .simple-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #e6ded2;}
